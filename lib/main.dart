@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 
 import './question.dart';
+import './core_theme.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,10 +30,13 @@ class MyAppState extends State<MyApp> {
   }
   @override
   Widget build(BuildContext context) {
+    final theme = CoreTheme.dark();
     return MaterialApp(
+      theme: theme,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Abul Aman S'),
+          title: Text('Team AweSome', style: theme.textTheme.headline6),
+          
         ),
         body: Column(
           children: <Widget>[
