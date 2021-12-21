@@ -4,6 +4,10 @@ import 'package:google_fonts/google_fonts.dart';
 class CoreTheme {
   static const maroon = Color(0xff7b242c);
   static const beige = Color(0xffd5a54e);
+  static const red = Color(0xffda2a27);
+  static const grey = Color(0xff2a211f);
+  static  const cream = Color(0xfff9f6f5);
+  
   
 
   // 1
@@ -40,8 +44,10 @@ class CoreTheme {
   // 2
   static ThemeData dark() {
     return ThemeData(
-      brightness: Brightness.dark,
+      backgroundColor: maroon,
+      brightness: Brightness.light,
       // ignore: prefer_const_constructors
+      scaffoldBackgroundColor: cream,
       appBarTheme: AppBarTheme(
 
         foregroundColor: Colors.white,
