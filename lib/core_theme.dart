@@ -45,9 +45,9 @@ class CoreTheme {
   static ThemeData dark() {
     return ThemeData(
       backgroundColor: maroon,
-      brightness: Brightness.light,
+      brightness: Brightness.dark,
       // ignore: prefer_const_constructors
-      scaffoldBackgroundColor: cream,
+      scaffoldBackgroundColor: grey,
       appBarTheme: AppBarTheme(
 
         foregroundColor: Colors.white,
