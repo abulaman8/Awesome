@@ -22,6 +22,7 @@ class Constants {
   static const signInNavigate = '/sign-in';
   static const homeNavigate = '/home';
   static const profileNavigate = '/profile';
+  static const editProfileNavigate = '/editProfile';
 
   static const statusBarColor = SystemUiOverlayStyle(
       statusBarColor: Constants.cream,

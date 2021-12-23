@@ -39,6 +39,12 @@ dependencies:
   firebase_auth: ^3.3.4
   google_sign_in: ^5.2.1
   font_awesome_flutter: ^9.2.0
+  geolocator: ^8.0.1
+  firebase_database: ^9.0.4
+  firebase_database_web: ^0.2.0+3
+  latlong: ^0.6.1
+  geocoding: ^2.0.1
+  fluttertoast: ^8.0.8
 
 dev_dependencies:
   flutter_test:
