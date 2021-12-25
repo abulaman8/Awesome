@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "570470360039-ikdbohetvkrjfuc3dqlv7no8g95lqtja.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.onatcipli.awesome",
+            "certificate_hash": "405405cff2ad98c3e4200d9e5a2a4b66e9399c8e"
+          }
+        },
+        {
           "client_id": "570470360039-okopmsotl168tthjtn680hg9968c5lg9.apps.googleusercontent.com",
           "client_type": 3
         }

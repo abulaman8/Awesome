@@ -26,37 +26,43 @@ class EditProfile extends StatelessWidget {
         appBar: AppBar(),
         body: Center(
           child: Padding(
-            padding: const EdgeInsets.all(15),
+            padding: const EdgeInsets.all(25),
             child: Column(
               children: [
                 TextField(
                   controller: pcontroller,
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.phone),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(2))),
                     hintText: 'Phone Number...',
                     hintStyle: TextStyle(color: Colors.grey),
                   ),
                   
                 ),
+                const SizedBox(height: 20,),
                 TextField(
                   controller: rcontroller,
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.input),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(2))),
                     hintText: 'Roll Number...',
                     hintStyle: TextStyle(color: Colors.grey),
                   ),
                   
                 ),
+                const SizedBox(height: 20,),
 
                 TextField(
                   controller: econtroller,
                   decoration: const InputDecoration(
                     prefixIcon: Icon(Icons.location_city),
+                    border: OutlineInputBorder(borderRadius: BorderRadius.all(Radius.circular(2))),
                     hintText: 'Exam Center...',
                     hintStyle: TextStyle(color: Colors.grey),
                   ),
                   
                 ),
+                const SizedBox(height: 20,),
                 
                 ElevatedButton(
                   child: const Text('Test set'),

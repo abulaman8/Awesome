@@ -11,6 +11,9 @@ class Constants {
   static const maroon = CoreTheme.maroon;
   static const BorderColor = Color(0xFFEFEFEF);
 
+  //cites
+  static const List<String> cities = ['Chennai', 'Madurai', 'New Delhi', 'Kalaburagi', 'Hyderabad', 'Mumbai', 'Kolkata', 'Trichy', 'Pondicherry'];
+
   //text
   static const title = "Google Sign In";
   
