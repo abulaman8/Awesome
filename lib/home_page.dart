@@ -59,11 +59,14 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             TypeAheadField(
-              suggestionsCallback: CityData.getSuggestions,
-              onSuggestionSelected: (String? suggestion) =>
-            controllerCity.text = suggestion!,
+              suggestionsCallback: (pattern) {
+                return CityData.getSuggestions(pattern);
+                },
+              onSuggestionSelected: (String? suggestion) {
+                Navigator.pushNamed(context, Constants.cityDetailsNavigate, arguments: {'name': suggestion});
+                },
               itemBuilder: (context, String? suggestion) => ListTile(
-                title: Text(suggestion!),
+                title: Text(suggestion as String),
               ),
               textFieldConfiguration: const TextFieldConfiguration(
                 decoration: InputDecoration(
