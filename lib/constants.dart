@@ -11,6 +11,7 @@ class Constants {
   static const grey = CoreTheme.grey;
   static const maroon = CoreTheme.maroon;
   static const BorderColor = Color(0xFFEFEFEF);
+  static const beige = CoreTheme.beige;
 
   //cites
   static const List<String> cities = ['Chennai', 'Madurai', 'New Delhi', 'Kalaburagi', 'Hyderabad', 'Mumbai', 'Kolkata', 'Trichy', 'Pondicherry'];
@@ -28,6 +29,7 @@ class Constants {
   static const profileNavigate = '/profile';
   static const editProfileNavigate = '/editProfile';
   static const cityDetailsNavigate = '/cityDetails';
+  static const CityChatNavigate = '/cityChat';
 
   static const statusBarColor = SystemUiOverlayStyle(
       statusBarColor: Constants.cream,

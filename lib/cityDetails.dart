@@ -15,6 +15,7 @@ class CityDetails extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('City Profile'),
+        actions: [IconButton(onPressed:() => Navigator.pushNamed(context, Constants.CityChatNavigate, arguments: {'city' : name['name']}), icon: Icon(Icons.chat))],
       ),
       body: Center(
         child: Padding(

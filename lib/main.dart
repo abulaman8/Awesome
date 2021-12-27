@@ -6,7 +6,7 @@ import 'package:firebase_core/firebase_core.dart';
 
 import './core_theme.dart';
 
-import './Home.dart';
+
 import './navigate.dart';
 import './constants.dart';
 

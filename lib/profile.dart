@@ -38,88 +38,104 @@ class _ProfileState extends State<Profile> {
     final theme = CoreTheme.dark();
     final controller = TextEditingController();
     return Scaffold(
-      appBar: AppBar(
-        title: Text('${user!.displayName!}\'s Profile',
-            style: theme.textTheme.headline6),
-      ),
-      body: Center(
-        child: Padding(
-          padding: EdgeInsets.all(50),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircleAvatar(
-                backgroundImage: NetworkImage(user.photoURL!),
-                radius: 55,
-              ),
-              const SizedBox(height: 100),
-              Table(
-                border: const TableBorder(horizontalInside: BorderSide(width: 1, color: Constants.cream, style: BorderStyle.solid), top: BorderSide(width: 1, color: Constants.cream, style: BorderStyle.solid), bottom: BorderSide(width: 1, color: Constants.cream, style: BorderStyle.solid),),
-                textDirection: TextDirection.ltr,
-                
-                children: <TableRow>[
-                  TableRow(
-                    children: <Widget>[
-                      const Text('Name : '),
-                      Text(user.displayName as String)
-                    ],
+        appBar: AppBar(
+          title: Text('${user!.displayName!}\'s Profile',
+              style: theme.textTheme.headline6),
+        ),
+        body: Center(
+          child: Padding(
+            padding: EdgeInsets.all(40),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  backgroundImage: NetworkImage(user.photoURL!),
+                  radius: 45,
+                ),
+                const SizedBox(height: 40),
+                Table(
+                  border: const TableBorder(
+                    horizontalInside: BorderSide(
+                        width: 1,
+                        color: Constants.cream,
+                        style: BorderStyle.solid),
+                    top: BorderSide(
+                        width: 1,
+                        color: Constants.cream,
+                        style: BorderStyle.solid),
+                    bottom: BorderSide(
+                        width: 1,
+                        color: Constants.cream,
+                        style: BorderStyle.solid),
                   ),
-                  const TableRow(
-                    children: <Widget>[
-                      SizedBox(height: 20),
-                      SizedBox(height: 20),
-
-                    ],
-                  ),
-                  TableRow(
-                    children: <Widget>[
-                      const Text('Email : '),
-                      Text(user.email as String)
-                    ],
-                  ),
-                  const TableRow(
-                    children: <Widget>[
-                      SizedBox(height: 20),
-                      SizedBox(height: 20),
-
-                    ],
-                  ),
-                  TableRow(
-                    children: <Widget>[const Text('Roll Number : '), Text(roll)],
-                  ),
-                  const TableRow(
-                    children: <Widget>[
-                      SizedBox(height: 20),
-                      SizedBox(height: 20),
-
-                    ],
-                  ),
-                  TableRow(
-                    children: <Widget>[const Text('Phone Number : '), Text(phone)],
-                  ),
-                  const TableRow(
-                    children: <Widget>[
-                      SizedBox(height: 20),
-                      SizedBox(height: 20),
-
-                    ],
-                  ),
-                  TableRow(
-                    children: <Widget>[const Text('Exam City. : '), Text(city)],
-                  ),
-                ],
-              ),
-
-              const SizedBox(height: 30),
-              ElevatedButton(
-                child: const Text('Edit'),
-                onPressed: () =>
-                    Navigator.pushNamed(context, Constants.editProfileNavigate),
-              )
-            ],
+                  textDirection: TextDirection.ltr,
+                  children: <TableRow>[
+                    TableRow(
+                      children: <Widget>[
+                        const Text('Name : '),
+                        Text(user.displayName as String)
+                      ],
+                    ),
+                    const TableRow(
+                      children: <Widget>[
+                        SizedBox(height: 15),
+                        SizedBox(height: 15),
+                      ],
+                    ),
+                    TableRow(
+                      children: <Widget>[
+                        const Text('Email : '),
+                        Text(user.email as String)
+                      ],
+                    ),
+                    const TableRow(
+                      children: <Widget>[
+                        SizedBox(height: 15),
+                        SizedBox(height: 15),
+                      ],
+                    ),
+                    TableRow(
+                      children: <Widget>[
+                        const Text('Roll Number : '),
+                        Text(roll)
+                      ],
+                    ),
+                    const TableRow(
+                      children: <Widget>[
+                        SizedBox(height: 15),
+                        SizedBox(height: 15),
+                      ],
+                    ),
+                    TableRow(
+                      children: <Widget>[
+                        const Text('Phone Number : '),
+                        Text(phone)
+                      ],
+                    ),
+                    const TableRow(
+                      children: <Widget>[
+                        SizedBox(height: 15),
+                        SizedBox(height: 15),
+                      ],
+                    ),
+                    TableRow(
+                      children: <Widget>[
+                        const Text('Exam City. : '),
+                        Text(city)
+                      ],
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 15),
+                ElevatedButton(
+                  child: const Text('Edit'),
+                  onPressed: () => Navigator.pushNamed(
+                      context, Constants.editProfileNavigate),
+                )
+              ],
+            ),
           ),
         ),
-      ),
-    );
+      );
   }
 }
