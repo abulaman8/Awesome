@@ -2,7 +2,6 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:geolocator/geolocator.dart';
 
 
 class EditProfile extends StatelessWidget {
@@ -13,8 +12,7 @@ class EditProfile extends StatelessWidget {
   final rcontroller = TextEditingController();
   final String? email = FirebaseAuth.instance.currentUser?.email;
   final String? name = FirebaseAuth.instance.currentUser?.displayName;
-  final pos =  Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
-  late Position currentposition;
+  
 
 
   @override
