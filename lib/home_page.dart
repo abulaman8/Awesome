@@ -31,71 +31,62 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
   }
-  
-  getCurrentLocation() async{
+
+  getCurrentLocation() async {
     bool serviceEnabled;
     LocationPermission permission;
-  serviceEnabled = await Geolocator.isLocationServiceEnabled();
-  if (!serviceEnabled) {
-    return Future.error('Location services are disabled.');
-  }
-
-  permission = await Geolocator.checkPermission();
-  if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-    if (permission == LocationPermission.deniedForever) {
-      return Future.error(
-        'Location permissions are permanently denied, we cannot request permissions.');
-    } 
-
-    if (permission == LocationPermission.denied) {
-      
-      return Future.error(
-          'Location permissions are denied');
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return Future.error('Location services are disabled.');
     }
-  }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.deniedForever) {
+        return Future.error(
+            'Location permissions are permanently denied, we cannot request permissions.');
+      }
+
+      if (permission == LocationPermission.denied) {
+        return Future.error('Location permissions are denied');
+      }
+    }
     await Geolocator.getCurrentPosition(
-    desiredAccuracy: LocationAccuracy.high,
-    forceAndroidLocationManager: true)
-    .then((Position position) {
-    setState(() {
+            desiredAccuracy: LocationAccuracy.high,
+            forceAndroidLocationManager: true)
+        .then((Position position) {
+      setState(() {
         currentPosition = position;
         getCurrentLocationAddress();
+      });
+    }).catchError((e) {
+      print(e);
     });
-}).catchError((e) {
-    print(e);
-});
-print('this works');
-print(currentPosition);
-}
+    print('this works');
+    print(currentPosition);
+  }
 
-getCurrentLocationAddress() async {
-try {
-List<Placemark> listPlaceMarks = await placemarkFromCoordinates(
-currentPosition!.latitude, currentPosition!.longitude);
-Placemark place = listPlaceMarks[0];
-final userDataRef = database.child('users/${user!.uid}');
-await userDataRef.update({'location' : '${place.locality}'});
+  getCurrentLocationAddress() async {
+    try {
+      List<Placemark> listPlaceMarks = await placemarkFromCoordinates(
+          currentPosition!.latitude, currentPosition!.longitude);
+      Placemark place = listPlaceMarks[0];
+      final userDataRef = database.child('users/${user!.uid}');
+      await userDataRef.update({'location': '${place.locality}'});
 
-setState(() {
-    currentLocationAddress = "${place.locality}, ${place.postalCode}, ${place.country}";
+      setState(() {
+        currentLocationAddress =
+            "${place.locality}, ${place.postalCode}, ${place.country}";
+      });
+    } catch (e) {
+      print(e);
     }
-);
-} catch (e) {
-    print(e);
-}
-print('this works too!!');
-
-}
-
-
+    print('this works too!!');
+  }
 
   @override
   Widget build(BuildContext context) {
-    
-    
-  
-    
     return Scaffold(
         appBar: AppBar(
           actions: <Widget>[
@@ -122,49 +113,99 @@ print('this works too!!');
           title: const Text("Home"),
         ),
         body: Center(
-            child: Padding(padding: const EdgeInsets.all(25),
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            TypeAheadField(
-              suggestionsCallback: (pattern) {
-                return CityData.getSuggestions(pattern);
-                },
-              onSuggestionSelected: (String? suggestion) {
-                Navigator.pushNamed(context, Constants.cityDetailsNavigate, arguments: {'name': suggestion});
-                },
-              itemBuilder: (context, String? suggestion) => ListTile(
-                title: Text(suggestion as String),
-              ),
-              textFieldConfiguration: const TextFieldConfiguration(
-                decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.search),
-                    border: OutlineInputBorder(),
-                    hintText: 'Search for a  City...'),
-              ),
-            ),
-            SizedBox(height: 20,),
-             if (currentPosition != null) Text('LAT: ${currentPosition!.latitude}', style: TextStyle(fontSize: 23, color: Colors.white),),
-    SizedBox(height: 15),
-    if (currentPosition != null) Text('LONG: ${currentPosition!.longitude}', style: TextStyle(fontSize: 23),),
-    SizedBox(height: 15),
-    if (currentLocationAddress != null) Text(currentLocationAddress as String, style: TextStyle(fontSize: 23),),
-    SizedBox(height: 25),
-    ElevatedButton(
-        child: Text('Get Current Location',
-        style: TextStyle(fontSize: 22, color: Colors.white)),
-        onPressed: () {
-            getCurrentLocation();
-        },
-        style: ElevatedButton.styleFrom(primary: Constants.maroon),
-    ),
-            Text(user!.email!),
-            Text(user!.displayName!),
-            CircleAvatar(
-              backgroundImage: NetworkImage(user!.photoURL!),
-              radius: 20,
-            ),
-          ],
-        )) ));
+            child: Padding(
+                padding: const EdgeInsets.all(25),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    TypeAheadField(
+                      suggestionsCallback: (pattern) {
+                        return CityData.getSuggestions(pattern);
+                      },
+                      onSuggestionSelected: (String? suggestion) {
+                        Navigator.pushNamed(
+                            context, Constants.cityDetailsNavigate,
+                            arguments: {'name': suggestion});
+                      },
+                      itemBuilder: (context, String? suggestion) => ListTile(
+                        title: Text(suggestion as String),
+                      ),
+                      textFieldConfiguration: const TextFieldConfiguration(
+                        decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.search),
+                            border: OutlineInputBorder(),
+                            hintText: 'Search for a  City...'),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    RichText(
+                      text: const TextSpan(children: <TextSpan>[
+                        TextSpan(
+                            text:
+                                'This are area is meant to hold a map of your '),
+                        TextSpan(
+                            text: 'Current City ',
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        TextSpan(
+                            text: 'which can display places of interest like '),
+                        TextSpan(
+                            text: 'Restaurants, Cafes, etc., ',
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        TextSpan(
+                            text:
+                                'Now the reason you are seeing this and not the map, is because of the fact that, '),
+                        TextSpan(
+                            text: 'the Google Places API, ',
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        TextSpan(text: 'which would facilitate all that is '),
+                        TextSpan(
+                            text: 'NOT FREE, ',
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        TextSpan(
+                            text:
+                                'and is Mad Expensive and requires a CC for the API key. '),
+                        TextSpan(
+                            text:
+                                'All three of us being students, we do not have sources. '),
+                        TextSpan(
+                            text: 'To point out the obvious, this idea is '),
+                        TextSpan(
+                            text: 'Brilliant ',
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                        TextSpan(text: 'And just lacks Financial Support.'),
+                      ]),
+                    ),
+                    const SizedBox(height: 20,),
+                    if (currentPosition != null)
+                      Text(
+                        'LAT: ${currentPosition!.latitude}',
+                        style: const TextStyle(fontSize: 23, color: Colors.white),
+                      ),
+                    const SizedBox(height: 15),
+                    if (currentPosition != null)
+                      Text(
+                        'LONG: ${currentPosition!.longitude}',
+                        style: const TextStyle(fontSize: 23),
+                      ),
+                    const SizedBox(height: 15),
+                    if (currentLocationAddress != null)
+                      Text(
+                        currentLocationAddress as String,
+                        style: const TextStyle(fontSize: 23),
+                      ),
+                    const SizedBox(height: 25),
+                    ElevatedButton(
+                      child: const Text('Get Current Location',
+                          style: TextStyle(fontSize: 22, color: Colors.white)),
+                      onPressed: () {
+                        getCurrentLocation();
+                      },
+                      style:
+                          ElevatedButton.styleFrom(primary: Constants.maroon),
+                    ),
+                  ],
+                ))));
   }
 }

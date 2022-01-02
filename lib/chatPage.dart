@@ -26,14 +26,6 @@ class _ChatPageState extends State<ChatPage> {
     });
   }
 
-
-
-
-
-  
-
-
-
   @override
   Widget build(BuildContext context) {
     final Map city = ModalRoute.of(context)?.settings.arguments as Map;

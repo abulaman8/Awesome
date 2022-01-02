@@ -22,7 +22,7 @@ class Navigate {
     '/profile' : (context) => Profile(),
     '/editProfile' : (context) => EditProfile(),
     '/cityDetails' : (context) => CityDetails(),
-    '/cityChat' : (context) => ChatPage()
+    '/cityChat' : (context) => ChatPage(),
 
   };
 
