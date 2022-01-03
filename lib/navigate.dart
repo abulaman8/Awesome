@@ -1,7 +1,4 @@
 
-
-
-
 import './home_page.dart';
 import './sign_in_page.dart';
 import './welcome_page.dart';
@@ -9,6 +6,7 @@ import './profile.dart';
 import './editProfile.dart';
 import './cityDetails.dart';
 import './chatPage.dart';
+import './dmpage.dart';
 import 'package:flutter/material.dart';
 
 
@@ -23,6 +21,7 @@ class Navigate {
     '/editProfile' : (context) => EditProfile(),
     '/cityDetails' : (context) => CityDetails(),
     '/cityChat' : (context) => ChatPage(),
+    '/dmPage' : (context) => DmPage(),
 
   };
 

@@ -4,6 +4,7 @@
 
 
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import './constants.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -17,6 +18,8 @@ class CityDetails extends StatefulWidget {
 
 class _CityDetailsState extends State<CityDetails> {
   final database = FirebaseDatabase.instance.ref();
+  final FirebaseAuth auth = FirebaseAuth.instance;
+  
   List list = [];
         List newlist = [];
   void getData(name) async {
@@ -39,6 +42,7 @@ class _CityDetailsState extends State<CityDetails> {
   @override
   Widget build(BuildContext context) {
     final Map name = ModalRoute.of(context)?.settings.arguments as Map;
+    final User? user = auth.currentUser;
     return Scaffold(
       appBar: AppBar(
         title: const Text('City Profile'),
@@ -69,7 +73,8 @@ class _CityDetailsState extends State<CityDetails> {
                         ),
                         title: Text(list[index][1]['name']),
                         subtitle: Text(list[index][1]['email']),
-                      );
+                        trailing: IconButton(onPressed: () => Navigator.pushNamed(context, Constants.dmPageNavigate, arguments: {'users' : [user!.displayName as String, list[index][1]['name'] as String]}), icon: Icon(Icons.send),
+                      ));
                     },
                   ),), ),
                   

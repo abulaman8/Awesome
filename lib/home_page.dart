@@ -165,7 +165,7 @@ class _HomePageState extends State<HomePage> {
                             style: TextStyle(fontWeight: FontWeight.bold)),
                         TextSpan(
                             text:
-                                'and is Mad Expensive and requires a CC for the API key. '),
+                                'and is Mad Expensive and requires a Credit Card for the API key. '),
                         TextSpan(
                             text:
                                 'All three of us being students, we do not have sources. '),

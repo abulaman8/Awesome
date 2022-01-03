@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:testapp/cityDetails.dart';
 import './core_theme.dart';
+
 
 class Constants {
   //colors
@@ -30,6 +30,8 @@ class Constants {
   static const editProfileNavigate = '/editProfile';
   static const cityDetailsNavigate = '/cityDetails';
   static const CityChatNavigate = '/cityChat';
+  static const dmPageNavigate = '/dmPage';
+
 
   static const statusBarColor = SystemUiOverlayStyle(
       statusBarColor: Constants.cream,
