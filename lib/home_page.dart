@@ -197,7 +197,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     const SizedBox(height: 25),
                     ElevatedButton(
-                      child: const Text('Get Current Location',
+                      child: const Text('Update My Location',
                           style: TextStyle(fontSize: 22, color: Colors.white)),
                       onPressed: () {
                         getCurrentLocation();

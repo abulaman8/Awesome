@@ -14,7 +14,7 @@ class Constants {
   static const beige = CoreTheme.beige;
 
   //cites
-  static const List<String> cities = ['Chennai', 'Madurai', 'New Delhi', 'Kalaburagi', 'Hyderabad', 'Mumbai', 'Kolkata', 'Trichy', 'Pondicherry'];
+  static const List<String> cities = ['Anantapur', 'Bhimavaram', 'Guntur', 'Kadapa', 'Kurnool', 'Rajahmundry', 'Tirupathi', 'Vijayawada', 'Vishakhapatnam', 'Naharlagun', 'Guwahati', 'Silchar', 'Tezpur', 'Patna', 'Raipur', 'Delhi', 'Panaji', 'Ahmedabad', 'Anand', 'Rajkot', 'Surat', 'Vadodara', 'Faridabad', 'Gurgaon', 'Hamirpur', 'Shimla', 'Jammu', 'Srinagar', 'Dhanbad', 'Jamshedpur', 'Ranchi', 'Belgaum', 'Bengaluru', 'Dharwad', 'Gulbarga', 'Mangalore', 'Mysore', 'Calicut', 'Ernakulam', 'Kollam', 'Kottayam', 'Palakkad', 'Thrissur', 'Trivandrum', 'Bhopal', 'Gwalior', 'Indore', 'Amravati', 'Aurangabad', 'Jalgaon', 'Kolhapur', 'Mumbai', 'Nagpur', 'Nanded', 'Nashik', 'Pune', 'Solapur', 'Imphal', 'Shillong', 'Aizawl', 'Dimapur', 'Bhubaneswar', 'Rourkela', 'Puducherry', 'Chandigarh', 'Jalandhar', 'Ludhiana', 'Jaipur', 'Jodhpur', 'Kota', 'Udaipur', 'Bardang', 'Chennai-Avadi', 'Chennai-South', 'Coimbatore', 'Erode', 'Kanchipuram', 'Madurai', 'Salem', 'Thanjavur', 'Tiruchirappalli', 'Tirunelveli', 'Vellore', 'Hyderabad', 'Warangal', 'Agartala', 'Agra', 'Allahabad', 'Ghaziabad', 'Greater Noida', 'Kanpur', 'Lucknow', 'Meerut', 'Varanasi', 'Dehradun', 'Roorkee', 'Aasansol', 'Adisaptagram', 'Durgapur', 'Kolkata', 'Port Blair', 'Sambalpur', 'Gorakhpur', 'Haldwani', 'Siliguri', 'Bhagalpur', 'Darbhanga', 'Gaya', 'Muzzafurpur', 'Jabalpur', 'Amritsar', 'Singapore', 'Colombo', 'Jaffna', 'Dubai', 'Hamdan', 'Muscat', 'Sharjah'];
 
   //text
   static const title = "Google Sign In";

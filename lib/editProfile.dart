@@ -66,9 +66,9 @@ class EditProfile extends StatelessWidget {
                   height: 20,
                 ),
                 ElevatedButton(
-                  child: const Text('Test set'),
+                  child: const Text('Update'),
                   onPressed: () async {
-                    await userDataRef.set({
+                    await userDataRef.update({
                       'name': user.displayName,
                       'roll_number': rcontroller.text,
                       'email': user.email,
