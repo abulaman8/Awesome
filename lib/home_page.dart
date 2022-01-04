@@ -107,6 +107,7 @@ class _HomePageState extends State<HomePage> {
               onPressed: () =>
                   Navigator.pushNamed(context, Constants.profileNavigate),
             ),
+            IconButton(onPressed: () => Navigator.pushNamed(context, Constants.dmdisplayNavigate), icon: Icon(Icons.send)),
           ],
           systemOverlayStyle:
               const SystemUiOverlayStyle(statusBarColor: Constants.maroon),

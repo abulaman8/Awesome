@@ -31,6 +31,7 @@ class Constants {
   static const cityDetailsNavigate = '/cityDetails';
   static const CityChatNavigate = '/cityChat';
   static const dmPageNavigate = '/dmPage';
+  static const dmdisplayNavigate = '/dmDisplay';
 
 
   static const statusBarColor = SystemUiOverlayStyle(

@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:testapp/constants.dart';
 import './message_box.dart';
 import './chatWall.dart';
 
 class DmPage extends StatefulWidget {
-  DmPage({Key? key,}) : super(key: key);
-
-
-  
+  DmPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _DmPageState createState() => _DmPageState();
 }
 
 class _DmPageState extends State<DmPage> {
+  final database = FirebaseDatabase.instance.ref();
+  Map senderlist = {};
 
   @override
   void initState() {
     super.initState();
     FirebaseAuth.instance.authStateChanges().listen((user) {
-      
       setState(() {});
     });
   }
@@ -30,27 +31,32 @@ class _DmPageState extends State<DmPage> {
   Widget build(BuildContext context) {
     final Map users = ModalRoute.of(context)?.settings.arguments as Map;
     final user = FirebaseAuth.instance.currentUser;
+
     users['users'].sort();
     final String user1 = users['users'][0];
     final String user2 = users['users'][1];
+    final msgref = database.child('messages/${user1 != user!.displayName ? user1 : user2}');
     final store = FirebaseFirestore.instance.collection('${user1}_${user2}');
     void _addMessage(String value) async {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user != null) {
-      await store.add({
-        'author': user.displayName ?? 'Anonymous',
-        'author_id': user.uid,
-        'timestamp': Timestamp.now().millisecondsSinceEpoch,
-        'value': value,
-      });
+      final user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        await store.add({
+          'author': user.displayName ?? 'Anonymous',
+          'author_id': user.uid,
+          'timestamp': Timestamp.now().millisecondsSinceEpoch,
+          'value': value,
+        });
+        await msgref.update({
+          user.displayName as String: {'name': user.displayName, 'dp': user.photoURL}
+        }).catchError((error) => print('you got an error $error'));
+
+      }
     }
-  }
 
     return Scaffold(
       appBar: AppBar(
-        title: user1 != user!.displayName ? Text(user1) : Text(user2),
-        actions: []
-      ),
+          title: user1 != user.displayName ? Text(user1) : Text(user2),
+          actions: []),
       backgroundColor: Constants.grey,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -79,12 +85,11 @@ class _DmPageState extends State<DmPage> {
               },
             ),
           ),
-          
           MessageBox(
             onSubmit: _addMessage,
           )
-          
         ],
       ),
     );
-  }}
+  }
+}

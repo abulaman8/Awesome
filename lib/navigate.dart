@@ -1,4 +1,7 @@
 
+
+import 'package:testapp/dmdisplay.dart';
+
 import './home_page.dart';
 import './sign_in_page.dart';
 import './welcome_page.dart';
@@ -22,6 +25,7 @@ class Navigate {
     '/cityDetails' : (context) => CityDetails(),
     '/cityChat' : (context) => ChatPage(),
     '/dmPage' : (context) => DmPage(),
+    '/dmDisplay' : (context) => DmDisplay()
 
   };
 
